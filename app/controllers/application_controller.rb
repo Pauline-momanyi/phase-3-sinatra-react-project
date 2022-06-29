@@ -26,12 +26,12 @@ class ApplicationController < Sinatra::Base
     detail.to_json(include: :patient)
   end
 
-  post '/newentry'
-    detail = PatientDetail.create(
+  # post '/newentry'
+  #   detail = PatientDetail.create(
 
-    )
-    detail.to_json
-  end
+  #   )
+  #   detail.to_json
+  # end
 
   delete '/details/:id' do 
     detail = PatientDetail.find(params[:id])

@@ -38,5 +38,11 @@ class ApplicationController < Sinatra::Base
     detail.to_json
   end
 
+  #logout
+  get '/logout' do 
+    session.clear 
+    redirect "/nurse_signed"
+  end
+
  
 end

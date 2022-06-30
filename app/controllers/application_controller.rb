@@ -26,12 +26,11 @@ class ApplicationController < Sinatra::Base
     detail.to_json(include: :patient)
   end
 
-  # post '/newentry'
-  #   detail = PatientDetail.create(
-
-  #   )
-  #   detail.to_json
-  # end
+  post '/newentry' do
+    detail = PatientDetail.new(params)
+    detail.save
+    detail.to_json
+  end
 
   delete '/details/:id' do 
     detail = PatientDetail.find(params[:id])
@@ -39,14 +38,5 @@ class ApplicationController < Sinatra::Base
     detail.to_json
   end
 
-  post '/message' do 
-    message = Message.create(
-      body: params[:body],
-      username: params[:username]
-    )
-    message.to_json
-  end
-
-  
-
+ 
 end

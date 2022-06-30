@@ -8,6 +8,15 @@ class ApplicationController < Sinatra::Base
     register Sinatra::Flash
   end
   
+  get '/allnurses' do
+    nurses = Nurse.all
+    nurses.to_json
+  end
+
+  get '/allusers' do
+    nurses = Patient.all
+    nurses.to_json
+  end
   # Add your routes here
   get '/' do
     # binding.pry

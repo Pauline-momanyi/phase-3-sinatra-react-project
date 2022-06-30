@@ -41,9 +41,10 @@ class NursesController < ApplicationController
     if nurse && nurse.authenticate(params[:password])
       session[:nurse_id] = nurse.id
       @newid = nurse.id
+      nurse.to_json
       # binding.pry
       # patient.id.to_json
-      redirect "/nurse_signed"
+      # redirect "/nurse_signed"
       # if patient 
       #   patient.id 
       # end

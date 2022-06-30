@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
   get "/signed" do
     { message: "signed" }.to_json
-    # @newid
+    # @session[:patient_id]
+    @id
     
   end
 
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
         patient.save
         puts patient.id
         session[:patient_id] = patient.id
+       
         
             # binding.pry
         redirect '/signed'
@@ -41,19 +43,9 @@ class UsersController < ApplicationController
 
     patient = Patient.find_by(:email => params[:email])
     if patient && patient.authenticate(params[:password])
-      @session = session
-      @session[:patient_id] = patient.id
+      session[:patient_id] = patient.id
       patient.to_json
-      # binding.pry
-      # patient.id.to_json
-      # redirect "/signed"
-      # if patient 
-      #   patient.id 
-      # end
-      # params[:email].to_json
-    # return user.id
-     
-     
+    
     else
     flash[:error] = "Invalid Credentials. Try again or sign up"
       # binding.pry

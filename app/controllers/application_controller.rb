@@ -15,14 +15,14 @@ class ApplicationController < Sinatra::Base
   end
 
   # users
-  get '/personal_details' do 
-    detail = PatientDetail.where(patient_id: 2)
+  get '/personal_details/:id' do 
+    detail = PatientDetail.where(patient_id: params[:id])
     detail.to_json(include: :patient)
   end
 
   # nurses
-  get '/nurse_scope' do 
-    detail = PatientDetail.where(doctor_id: 2)
+  get '/nurse_scope/:id' do 
+    detail = PatientDetail.where(doctor_id: params[:id])
     detail.to_json(include: :patient)
   end
 

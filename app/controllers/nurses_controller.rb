@@ -1,5 +1,5 @@
 class NursesController < ApplicationController
-    set :default_content_type, 'application/json'
+  set :default_content_type, "application/json"
 
   #signup => create
   get "/nurse_signup" do
@@ -8,8 +8,6 @@ class NursesController < ApplicationController
 
   get "/nurse_signed" do
     { message: "signed nurse" }.to_json
-    # @newid
-    
   end
 
   get "/nurse_notsigned" do
@@ -20,17 +18,14 @@ class NursesController < ApplicationController
     nurse = Nurse.new(params)
     # binding.pry
     if nurse.email.blank? || nurse.name.blank? || nurse.password.blank? || Nurse.find_by_email(params[:email]) || Nurse.find_by_name(params[:name])
-        redirect '/nurse_signup'
+      redirect "/nurse_signup"
     else
-        # response.headers['sessions'] = session
-        nurse.save
-        puts nurse.id
-        session[:nurse_id] = nurse.id
-        
-            # binding.pry
-        redirect '/nurse_signed'
-        # return nurse.id
-        # session
+      nurse.save
+      puts nurse.id
+      session[:nurse_id] = nurse.id
+
+      # binding.pry
+      redirect "/nurse_signed"
     end
   end
 
@@ -41,14 +36,11 @@ class NursesController < ApplicationController
     if nurse && nurse.authenticate(params[:password])
       session[:nurse_id] = nurse.id
       @newid = nurse.id
-      nurse.to_json   
-     
+      nurse.to_json
     else
       flash[:error] = "Invalid Credentials. Try again or sign up"
       # binding.pry
-      redirect "/nurse_notsigned" 
+      redirect "/nurse_notsigned"
     end
-    
   end
-
 end

@@ -14,8 +14,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/allusers' do
-    nurses = Patient.all
-    nurses.to_json
+    patients = Patient.all
+    patients.to_json
   end
   # Add your routes here
   get '/' do

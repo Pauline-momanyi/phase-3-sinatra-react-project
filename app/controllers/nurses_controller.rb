@@ -41,16 +41,7 @@ class NursesController < ApplicationController
     if nurse && nurse.authenticate(params[:password])
       session[:nurse_id] = nurse.id
       @newid = nurse.id
-      nurse.to_json
-      # binding.pry
-      # patient.id.to_json
-      # redirect "/nurse_signed"
-      # if patient 
-      #   patient.id 
-      # end
-      # params[:email].to_json
-    # return user.id
-     
+      nurse.to_json   
      
     else
       flash[:error] = "Invalid Credentials. Try again or sign up"
@@ -59,16 +50,5 @@ class NursesController < ApplicationController
     end
     
   end
-
-
-
-#   if @user_id? 
-#     puts @user_id
-#   else
-
-#   end
-
-  #logout => delete
-
 
 end

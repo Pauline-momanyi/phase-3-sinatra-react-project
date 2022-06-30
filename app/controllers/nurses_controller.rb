@@ -13,7 +13,7 @@ class NursesController < ApplicationController
   end
 
   get "/nurse_notsigned" do
-    { message: "notsigned nurse" }.to_json
+    { message: "notsigned" }.to_json
   end
 
   post "/nurse_signup" do

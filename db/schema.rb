@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 2022_06_28_110408) do
   create_table "nurses", force: :cascade do |t|
     t.string "email"
     t.string "name"
+    t.integer "age"
+    t.string "sex"
+    t.integer "doctor_id"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

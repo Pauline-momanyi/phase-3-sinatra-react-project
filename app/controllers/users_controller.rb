@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     patient = Patient.new(params)
     # binding.pry
     if patient.email.blank? || patient.name.blank? || patient.password.blank? || Patient.find_by_email(params[:email]) || Patient.find_by_name(params[:name])
-      redirect "/signed"
+      redirect "/notsigned"
     else
       patient.save
       puts patient.id

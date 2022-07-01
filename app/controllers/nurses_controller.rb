@@ -2,7 +2,7 @@ class NursesController < ApplicationController
   set :default_content_type, "application/json"
 
   #signup => create
-  get "/nurse_signup" do
+  get "/signup" do
     { message: "invalid nurse" }.to_json
   end
 
@@ -14,7 +14,7 @@ class NursesController < ApplicationController
     { message: "notsigned" }.to_json
   end
 
-  post "/nurse_signup" do
+  post "/nursesignup" do
     nurse = Nurse.new(params)
     # binding.pry
     if nurse.email.blank? || nurse.name.blank? || nurse.password.blank? || Nurse.find_by_email(params[:email]) || Nurse.find_by_name(params[:name])

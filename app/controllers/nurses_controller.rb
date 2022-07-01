@@ -2,7 +2,7 @@ class NursesController < ApplicationController
   set :default_content_type, "application/json"
 
   #signup => create
-  get "/signup" do
+  get "/nsignup" do
     { message: "invalid nurse" }.to_json
   end
 
@@ -18,7 +18,7 @@ class NursesController < ApplicationController
     nurse = Nurse.new(params)
     # binding.pry
     if nurse.email.blank? || nurse.name.blank? || nurse.password.blank? || Nurse.find_by_email(params[:email]) || Nurse.find_by_name(params[:name])
-      redirect "/nurse_signup"
+      redirect "/nsignup"
     else
       nurse.save
       puts nurse.id

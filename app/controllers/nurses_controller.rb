@@ -18,14 +18,14 @@ class NursesController < ApplicationController
     nurse = Nurse.new(params)
     # binding.pry
     if nurse.email.blank? || nurse.name.blank? || nurse.password.blank? || Nurse.find_by_email(params[:email]) || Nurse.find_by_name(params[:name])
-      redirect "/nsignup"
+      redirect '/nsignup'
     else
       nurse.save
       puts nurse.id
       session[:nurse_id] = nurse.id
 
       # binding.pry
-      redirect "/nurse_signed"
+      redirect '/nurse_signed'
     end
   end
 
